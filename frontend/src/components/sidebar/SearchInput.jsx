@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { IoSearchSharp } from "react-icons/io5";
+import { FaSearch } from "react-icons/fa";
 import useConversation from "../../zustand/useConversation";
 import useGetConversations from "../../hooks/useGetConversations";
 import toast from "react-hot-toast";
 
-const SearchInput = () => {
+const SearchInput= () => {
 	const [search, setSearch] = useState("");
 	const { setSelectedConversation } = useConversation();
 	const { conversations } = useGetConversations();
@@ -24,11 +25,12 @@ const SearchInput = () => {
 		} else toast.error("No such user found!");
 	};
 	return (
-		<form onSubmit={handleSubmit} className='flex items-center gap-2 w-full'>
+		<div className="pb-2">
+			<form onSubmit={handleSubmit} className='flex items-center gap-2'>
 			<input
 				type='text'
 				placeholder='Search…'
-				className=''
+				className='rounded-lg min-w-0 flex-1'
 				value={search}
 				onChange={(e) => setSearch(e.target.value)}
 			/>
@@ -36,8 +38,11 @@ const SearchInput = () => {
 				<IoSearchSharp className='w-6 h-6 outline-none' />
 			</button>
 		</form>
+		</div>
+		
 	);
 };
+
 export default SearchInput;
 
 // STARTER CODE SNIPPET

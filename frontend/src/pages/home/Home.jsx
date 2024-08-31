@@ -12,7 +12,7 @@ const Home = () => {
 	}
 	return (
 		<div className='grid lg:grid-cols-4 sm:grid-cols-3 w-full h-full overflow-hidden bg-red-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 relative'>
-			<button className="p-2 bg-white rounded-full absolute top-5 left-5 text-slate-800 z-10 sm:hidden" onClick={toggleSideBar}><GiHamburgerMenu/></button>
+			<button className="p-2 bg-white rounded-full absolute top-3 left-5 text-slate-800 z-[101] sm:hidden" onClick={toggleSideBar}><GiHamburgerMenu/></button>
 			<Sidebar/>
 			<SidebarMobile  sidebarOpen={sidebarOpen}  />
 			<MessageContainer />
