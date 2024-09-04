@@ -5,13 +5,14 @@ import Message from "./Message";
 import useListenMessages from "../../hooks/useListenMessages";
 import GroupMessage from "./GroupMessage";
 import useGetGroupMembers from "../../hooks/useGetGroupMembers";
+import { useAuthContext } from "../../context/AuthContext";
 
 const GroupMessages = () => {
 	const { messages, loading } = useGetMessages();
 	const {groupMembers, loading: groupMembersLoading} = useGetGroupMembers();
+	const { authUser } = useAuthContext();
 	// useListenMessages();
 	const lastMessageRef = useRef();
-	console.log("these are group members", groupMembers)
 	useEffect(() => {
 		setTimeout(() => {
 			lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -19,14 +20,14 @@ const GroupMessages = () => {
 	}, [messages]);
 
 	return (
-		<div className='px-4 flex-1 overflow-auto'>
+		<div className='px-4 flex-1 overflow-auto flex flex-col gap-2'>
 			{!loading &&
 				!groupMembersLoading &&
 				messages.length > 0 &&
 				messages.map((message) => (
 					<div key={message._id} ref={lastMessageRef}>
-						<h1>{groupMembers[message.senderId].username}</h1>
-						<GroupMessage message={message}/>
+						{/* {message.senderId !== authUser._id && (<h1 className="text-white/75">{groupMembers[message.senderId].username}</h1>)} */}
+						<GroupMessage message={message} username={groupMembers[message.senderId].username} />
 					</div>
 				))}
 

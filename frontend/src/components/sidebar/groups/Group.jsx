@@ -1,30 +1,34 @@
 import useGetGroupMembers from "../../../hooks/useGetGroupMembers";
+import useListenMessages from "../../../hooks/useListenMessages";
 import useConversation from "../../../zustand/useConversation";
 
 const Group = ({ group, lastIdx }) => {
 	const { selectedConversation, setSelectedConversation, setIsGroup } = useConversation();
 	const { groupMembers, loading } = useGetGroupMembers();
+	const { joinGroupSocket, leaveGroupSocket } = useListenMessages();
 	let isSelected = selectedConversation?._id === group._id;
 	function handleGroupSelected(){
 		if(isSelected){
 			setSelectedConversation(null);
 			setIsGroup(false);
+			leaveGroupSocket(group._id);
 		} else {
 			setSelectedConversation(group);
 			setIsGroup(true);
+			joinGroupSocket(group._id);
 		}
 		isSelected = selectedConversation?._id === group._id;
 	}
 	return (
 		<>
 			<div
-				className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer
-				${isSelected ? "bg-sky-500" : ""}
+				className={`flex gap-2 items-center hover:bg-gradient-pink-purple rounded cursor-pointer bg-secondary-dark-2 p-4
+				${isSelected ? "bg-gradient-pink-purple" : ""}
 			`}
 				onClick={handleGroupSelected}
 			>
 				
-					<div className='w-12 h-12 rounded-full flex items-center justify-center border border-gray-700'>
+					<div className='w-12 h-12 rounded-full flex items-center justify-center border border-gray-700 bg-slate-300'>
                         {group.groupPic ? (
                             <img src={group.groupPic} alt='group avatar' />
                         ) : (

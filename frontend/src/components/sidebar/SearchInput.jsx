@@ -34,7 +34,7 @@ const SearchInput= () => {
 				value={search}
 				onChange={(e) => setSearch(e.target.value)}
 			/>
-			<button type='submit' className=' bg-sky-500 text-white p-2 rounded-full'>
+			<button type='submit' className=' bg-gradient-pink-purple text-white p-2 rounded-full'>
 				<IoSearchSharp className='w-6 h-6 outline-none' />
 			</button>
 		</form>

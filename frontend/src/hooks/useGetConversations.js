@@ -13,7 +13,6 @@ const useGetConversations = () => {
 			try {
 				const res = await fetch(`/api/users/${authUser.institute}`);
 				const data = await res.json();
-				console.log("these are conversations", data);
 				if (data.error) {
 					throw new Error(data.error);
 				}
