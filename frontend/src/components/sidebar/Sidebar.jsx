@@ -1,4 +1,5 @@
 import Conversations from "./Conversations";
+import Groups from "./groups/Groups";
 import LogoutButton from "./LogoutButton";
 import SearchInput from "./SearchInput";
 
@@ -8,6 +9,7 @@ const Sidebar = () => {
 			<SearchInput />
 			<div className='divider sm:px-3 px-1'></div>
 			<Conversations />
+			<Groups />
 			<LogoutButton />		
 		</div>
 	);

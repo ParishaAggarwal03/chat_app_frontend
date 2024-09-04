@@ -4,10 +4,12 @@ import MessageInput from "./MessageInput";
 import Messages from "./Messages";
 import { TiMessages } from "react-icons/ti";
 import { useAuthContext } from "../../context/AuthContext";
+import GroupMessageInput from "./GroupMessageInput";
+import GroupMessages from "./GroupMessages";
 
 const MessageContainer = () => {
-	const { selectedConversation, setSelectedConversation } = useConversation();
-
+	const { selectedConversation, setSelectedConversation, isGroup } = useConversation();
+	
 	useEffect(() => {
 		// cleanup function (unmounts)
 		return () => setSelectedConversation(null);
@@ -17,17 +19,24 @@ const MessageContainer = () => {
 		<div className='flex flex-col lg:col-span-3 sm:col-span-2 bg-zinc-400'>
 			{!selectedConversation ? (
 				<NoChatSelected />
-			) : (
-				<>
-			
-					<div className='bg-slate-500 px-4 py-4 mb-2 flex justify-center'>
+			) : isGroup ? (
+					<>
+						<div className='bg-slate-500 px-4 py-4 mb-2 flex justify-center'>
+							<span className='text-gray-900 font-bold'>{selectedConversation.groupName}</span>
+						</div>
+						<GroupMessages />
+						<GroupMessageInput/>
+					</>
+				) : (
+					<>
+						<div className='bg-slate-500 px-4 py-4 mb-2 flex justify-center'>
 						{/* <span className='label-text'>To:</span>{" "} */}
 						<span className='text-gray-900 font-bold'>{selectedConversation.username}</span>
 					</div>
-					<Messages />
-					<MessageInput />
-				</>
-			)}
+						<Messages />
+						<MessageInput />
+					</>
+				)}
 		</div>
 	);
 };

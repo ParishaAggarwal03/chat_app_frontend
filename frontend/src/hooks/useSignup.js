@@ -30,8 +30,8 @@ const useSignup = () => {
 		}
 	};
 
-	const verifyEmail = async ({ fullName, username, password, confirmPassword, gender, email }) => {
-		const success = handleInputErrors({ fullName, username, password, confirmPassword, gender, email });
+	const verifyEmail = async ({  username, password, confirmPassword, gender, email, instituteName }) => {
+		const success = handleInputErrors({  username, password, confirmPassword, gender, email, instituteName });
 		if (!success) return;
 
 		setLoading(true);
@@ -39,7 +39,7 @@ const useSignup = () => {
 			const res = await fetch("/api/auth/email-verification", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ fullName, username, password, confirmPassword, gender, email }),
+				body: JSON.stringify({  username, password, gender, email, instituteName}),
 			});
 
 			const data = await res.json();
@@ -58,8 +58,8 @@ const useSignup = () => {
 };
 export default useSignup;
 
-function handleInputErrors({ fullName, username, password, confirmPassword, gender, email }) {
-	if (!fullName || !username || !password || !confirmPassword || !gender || !email) {
+function handleInputErrors({  username, password, confirmPassword, gender, email, instituteName }) {
+	if ( !username || !password || !confirmPassword || !gender || !email || !instituteName) {
 		toast.error("Please fill in all fields");
 		return false;
 	}
