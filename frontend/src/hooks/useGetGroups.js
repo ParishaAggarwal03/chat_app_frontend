@@ -11,7 +11,7 @@ const useGetGroups   = () => {
 		const getGroups = async () => {  
 			setLoading(true);
 			try {
-				const res = await fetch(`/api/groups/${authUser._id}`);
+				const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/groups/${authUser._id}`);
 				const data = await res.json();
 				console.log(data);
 				if (data.error) {

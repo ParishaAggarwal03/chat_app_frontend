@@ -11,7 +11,7 @@ const useSignup = () => {
 
 		setLoading(true);
 		try {
-			const res = await fetch("/api/auth/signup", {
+			const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/signup`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ verificationToken: jwt}),
@@ -36,7 +36,7 @@ const useSignup = () => {
 
 		setLoading(true);
 		try {
-			const res = await fetch("/api/auth/email-verification", {
+			const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/email-verification`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({  username, password, gender, email, instituteName}),
