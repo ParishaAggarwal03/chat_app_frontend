@@ -6,7 +6,6 @@ function EmailVerification() {
     const params = useParams()
     const { loading , signup} = useSignup()
     async function handleVerification(){
-        console.log("Params", params)
         await signup({jwt:params.verificationToken})
     }
   return (

@@ -16,22 +16,22 @@ const MessageContainer = () => {
 	}, [setSelectedConversation]);
 
 	return (
-		<div className='flex flex-col lg:col-span-3 sm:col-span-2 bg-zinc-400'>
+		<div className='flex flex-col overflow-auto lg:col-span-3 sm:col-span-2 bg-secondary-dark-2'>
 			{!selectedConversation ? (
 				<NoChatSelected />
 			) : isGroup ? (
 					<>
-						<div className='bg-slate-500 px-4 py-4 mb-2 flex justify-center'>
-							<span className='text-gray-900 font-bold'>{selectedConversation.groupName}</span>
+						<div className='bg-secondary-dark-1 px-4 py-4 mb-2 flex justify-center border-b border-gray-700'>
+							<span className='text-white/90 font-bold'>{selectedConversation.groupName}</span>
 						</div>
 						<GroupMessages />
 						<GroupMessageInput/>
 					</>
 				) : (
 					<>
-						<div className='bg-slate-500 px-4 py-4 mb-2 flex justify-center'>
+						<div className='bg-secondary-dark-1 px-4 py-4 mb-2 flex justify-center border-b border-gray-700'>
 						{/* <span className='label-text'>To:</span>{" "} */}
-						<span className='text-gray-900 font-bold'>{selectedConversation.username}</span>
+						<span className='text-white/90 font-bold'>{selectedConversation.username}</span>
 					</div>
 						<Messages />
 						<MessageInput />

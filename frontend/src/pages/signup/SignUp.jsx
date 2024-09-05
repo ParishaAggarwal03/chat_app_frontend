@@ -17,7 +17,6 @@ export default function SignUp() {
   });	
   const { institutes:options } = useGetInstitutes();
   const { loading, verifyEmail } = useSignup();
-  console.log(options);
   const handleCheckboxChange = (gender) => {
     setInputs({ ...inputs, gender });
   };
@@ -48,7 +47,7 @@ export default function SignUp() {
               <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
                 Sign up to WhisperChat
               </h2>
-			  <button onClick={() => console.log(inputs)}>console log</button>
+			  {/* <button onClick={() => console.log(inputs)}>console log</button> */}
               <p className="mt-2 text-sm leading-6 text-gray-500">
                 Already a member?{" "}
                 <Link

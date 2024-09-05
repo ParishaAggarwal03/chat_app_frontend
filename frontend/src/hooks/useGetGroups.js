@@ -13,7 +13,6 @@ const useGetGroups   = () => {
 			try {
 				const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/groups/${authUser._id}`);
 				const data = await res.json();
-				console.log(data);
 				if (data.error) {
 					throw new Error(data.error);
 				}
