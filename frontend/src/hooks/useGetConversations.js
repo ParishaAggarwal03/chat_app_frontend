@@ -11,7 +11,10 @@ const useGetConversations = () => {
 		const getConversations = async () => {
 			setLoading(true);
 			try {
-				const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/users/${authUser.institute}`);
+				const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/users/${authUser.institute}`,  {
+					withCredntials: true,
+					credentials: 'include'
+		});
 				const data = await res.json();
 				if (data.error) {
 					throw new Error(data.error);

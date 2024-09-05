@@ -23,7 +23,10 @@ const useGetMessages = () => {
 		const getGroupMessages = async () => {
 			setLoading(true);
 			try {
-				const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/messages/group/${selectedConversation._id}`);
+				const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/messages/group/${selectedConversation._id}`,  {
+					withCredntials: true,
+					credentials: 'include'
+		});
 				const data = await res.json();
 				if (data.error) throw new Error(data.error);
 				setMessages(data);

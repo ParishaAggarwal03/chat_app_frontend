@@ -11,7 +11,10 @@ const useGetGroups   = () => {
 		const getGroups = async () => {  
 			setLoading(true);
 			try {
-				const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/groups/${authUser._id}`);
+				const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/groups/${authUser._id}`,  {
+					withCredntials: true,
+					credentials: 'include'
+		});
 				const data = await res.json();
 				if (data.error) {
 					throw new Error(data.error);

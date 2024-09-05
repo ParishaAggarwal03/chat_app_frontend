@@ -9,7 +9,10 @@ const useGetInstitutes = () => {
         const fetchInstitutes = async () => {
             setLoading(true);
             try {
-                const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/institutes`);
+                const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/institutes`,  {
+                    withCredntials: true,
+                    credentials: 'include'
+        });
                 const data = await res.json();
                 if (data.error) throw new Error(data.error);
                 setInstitutes(data);

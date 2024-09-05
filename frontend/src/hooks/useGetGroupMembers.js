@@ -9,7 +9,10 @@ function   useGetGroupMembers() {
     useEffect(() => {
         setLoading(true);
         const getGroupMembers = async () => {
-            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/groups/members/${selectedConversation._id}`);
+            const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/groups/members/${selectedConversation._id}`,  {
+                withCredntials: true,
+                credentials: 'include'
+    });
             const data = await res.json();
             setGroupMembers(data);
             setLoading(false);
