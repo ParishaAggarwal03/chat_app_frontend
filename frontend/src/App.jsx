@@ -9,6 +9,7 @@ import EmailVerification from "./pages/emailVerification/EmailVerification";
 
 function App() {
 	const { authUser } = useAuthContext();
+	console.log("This is envoremnet variable", import.meta.env.VITE_BACKEND_URL);
 	return (
 		<div className='h-screen flex items-center justify-center'>
 			<Routes>
