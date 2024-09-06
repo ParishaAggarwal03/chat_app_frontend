@@ -12,6 +12,8 @@ const useLogout = () => {
 			const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/logout`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
+				withCredentials: true,
+				credentials: 'include'
 			});
 			const data = await res.json();
 			if (data.error) {
