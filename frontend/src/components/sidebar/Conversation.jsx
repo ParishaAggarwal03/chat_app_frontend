@@ -25,10 +25,14 @@ const Conversation = ({ conversation, lastIdx, emoji }) => {
 			`}
 				onClick={handleConversationSelected}
 			>
-				<div className={`avatar ${isOnline ? "online" : ""}`}>
-					<div className='w-12 rounded-full'>
-						<img src={conversation.profilePic} alt='user avatar' />
-					</div>
+				<div className='w-12 h-12 rounded-full flex items-center justify-center border border-gray-700 bg-gradient-yellow-orange'>
+					
+						{false ? (
+							<img src={conversation.profilePic} alt='user avatar' />
+						) : (
+							<span className='text-2xl font-bold capitalize text-offwhite'>{conversation.username.charAt(0)}</span>
+						)}
+		
 				</div>
 
 				<div className='flex flex-col flex-1'>
@@ -39,7 +43,7 @@ const Conversation = ({ conversation, lastIdx, emoji }) => {
 				</div>
 			</div>
 
-			{!lastIdx && <div className='divider my-0 py-0 h-1' />}
+			{!lastIdx && <div className='border-b border-gray-700 my-0 py-0 h-1' />}
 		</>
 	);
 };

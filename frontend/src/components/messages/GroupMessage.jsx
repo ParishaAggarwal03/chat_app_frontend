@@ -37,11 +37,12 @@ const GroupMessage = ({ message, username }) => {
     <div className={`flex flex-col ${chatClassName} gap-2`}>
       <div className={`flex gap-2 ${fromMe ? "flex-row-reverse" : ""}`}>
         <div className="chat-image ">
-          <div className="w-10 h-10 rounded-full flex items-center justify-center border border-gray-700 text-2xl font-bold capitalize">
+          {!fromMe ? (
+            <div className="w-10 h-10 rounded-full flex items-center justify-center border border-gray-700 text-2xl font-bold capitalize bg-gradient-yellow-orange">
 			<span className="text-white">
               {username.charAt(0)}
 			</span>
-          </div>
+          </div>): ""}
         </div>
 	
         <div

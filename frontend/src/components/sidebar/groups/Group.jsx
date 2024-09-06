@@ -28,12 +28,12 @@ const Group = ({ group, lastIdx }) => {
 				onClick={handleGroupSelected}
 			>
 				
-					<div className='w-12 h-12 rounded-full flex items-center justify-center border border-gray-700 bg-slate-300'>
+					<div className='w-12 h-12 rounded-full flex items-center justify-center border border-gray-700 bg-gradient-yellow-pink'>
                         {group.groupPic ? (
                             <img src={group.groupPic} alt='group avatar' />
                         ) : (
                             
-                                <span className='text-2xl font-bold capitalize text-black'>{group.groupName.charAt(0)}</span>
+                                <span className='text-2xl font-bold capitalize text-offwhite'>{group.groupName.charAt(0)}</span>
                          
                         )}
 					</div>
