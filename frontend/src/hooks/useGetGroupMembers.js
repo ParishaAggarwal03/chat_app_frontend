@@ -14,7 +14,7 @@ function useGetGroupMembers() {
           selectedConversation._id
         }`,
         {
-          withCredntials: true,
+          
           credentials: "include",
         }
       );

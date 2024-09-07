@@ -11,7 +11,7 @@ const useGetMessages = () => {
 			setLoading(true);
 			try {
 				const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/messages/${selectedConversation._id}`, {
-					withCredentials: true,
+					
 					credentials: 'include'
 				});
 				const data = await res.json();
@@ -27,7 +27,7 @@ const useGetMessages = () => {
 			setLoading(true);
 			try {
 				const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/messages/group/${selectedConversation._id}`,  {
-					withCredntials: true,
+					
 					credentials: 'include'
 		});
 				const data = await res.json();

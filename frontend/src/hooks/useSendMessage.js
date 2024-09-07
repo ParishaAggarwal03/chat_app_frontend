@@ -15,7 +15,7 @@ const useSendMessage = () => {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({ message }),
-				withCredentials: true,
+				
 				credentials: 'include'
 			});
 			const data = await res.json();
@@ -37,7 +37,7 @@ const useSendMessage = () => {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				withCredentials: true,
+				
 				credentials: 'include',
 				body: JSON.stringify({ message, senderId }),
 			});
